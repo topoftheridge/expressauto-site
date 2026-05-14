@@ -13,7 +13,7 @@ export default function Hero({ title, subtitle, showCTA = true }: HeroProps) {
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 drop-shadow-lg">
             <span style={{ color: '#e22e2f' }}>Ex</span>
-            <span style={{ color: '#1065dd' }}>press</span>{" "}
+            <span style={{ color: '#0ea5e9' }}>press</span>{" "}
             <span className="text-white">Auto Detail</span>
           </h1>
           <p className="text-lg sm:text-xl text-white/90 mb-10 leading-relaxed drop-shadow-md max-w-2xl mx-auto">
