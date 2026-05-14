@@ -1,7 +1,12 @@
 import Hero from "@/components/Hero";
 import QuoteForm from "@/components/QuoteForm";
 import HeroBackground from "@/components/HeroBackground";
-import { Sparkles, Shield, Truck, Droplets, Car, Wrench } from "lucide-react";
+import { Sparkles, Shield, Truck, Droplets, Car, MapPin, Phone } from "lucide-react";
+
+const areas = [
+  "Warrington", "Doylestown", "Horsham", "Lansdale", "Chalfont", "Montgomeryville",
+  "Newtown", "Yardley", "Quakertown", "Levittown", "Bristol", "Bensalem",
+];
 
 export default function HomePage() {
   const jsonLd = {
@@ -10,6 +15,8 @@ export default function HomePage() {
     name: "Express Auto Detail",
     description: "Professional mobile auto detailing services in Bucks County, PA. We come to you within a 30-mile radius.",
     url: "https://expressautodetailwash.com",
+    telephone: "+12673265093",
+    email: "Expressautodetailwash@gmail.com",
     areaServed: [
       { "@type": "AdministrativeArea", name: "Bucks County, PA" },
     ],
@@ -31,7 +38,7 @@ export default function HomePage() {
       </HeroBackground>
 
       {/* Why Choose Us */}
-      <section className="py-20 lg:py-32 bg-dark-light">
+      <section id="about" className="py-20 lg:py-32 bg-dark-light">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-primary font-semibold text-sm tracking-widest uppercase mb-3">Why Express Auto Detail</p>
           <h2 className="text-3xl lg:text-5xl font-bold text-white leading-tight max-w-2xl mb-16">
@@ -243,20 +250,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Add-Ons */}
-      <section id="addons" className="py-16 lg:py-24 bg-dark">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Areas We Serve */}
+      <section id="areas" className="py-16 lg:py-24 bg-dark">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl lg:text-4xl font-bold text-white text-center mb-4">
-            <span className="text-primary">Add-On</span> Services
+            Proudly Serving <span className="text-primary">Bucks County</span>
           </h2>
           <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-            Enhance any detailing package with these additional services.
+            Our mobile auto detailing team comes directly to you across Bucks County, PA and surrounding areas. No matter where you are, we&apos;ll make your vehicle shine.
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-            {["Car Wax", "Seat Extraction", "Pet Hair Removal", "Engine Bay Cleaning", "Trim Restoration", "Headlight Restoration"].map((addon) => (
-              <div key={addon} className="flex items-center gap-3 p-4 rounded-lg bg-dark-light border border-white/5 hover:border-primary/50 transition">
-                <Wrench className="w-5 h-5 text-primary shrink-0" />
-                <span className="text-white font-medium text-sm">{addon}</span>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            {areas.map((area) => (
+              <div key={area} className="group rounded-xl border border-white/5 hover:border-primary/50 transition bg-dark-light p-5 text-center">
+                <MapPin className="w-5 h-5 text-primary mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                <h3 className="text-white font-semibold text-base">{area}, PA</h3>
+                <p className="text-gray-500 text-xs mt-1">Auto Detailing in {area}</p>
               </div>
             ))}
           </div>
@@ -270,11 +278,15 @@ export default function HomePage() {
             Ready for the <span className="text-primary">Express Treatment</span>?
           </h2>
           <p className="text-gray-400 mb-6">
-            We bring professional detailing right to your door. Fill out the form above for a free, no-obligation quote.
+            We bring professional detailing right to your door. Fill out the form above for a free, no-obligation quote — or give us a call!
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="#quote" className="inline-flex items-center justify-center bg-primary text-white font-bold px-8 py-4 rounded-lg hover:bg-primary-dark transition text-lg">
               Contact Us
+            </a>
+            <a href="tel:+12673265093" className="inline-flex items-center justify-center gap-2 bg-white/10 text-white font-bold px-8 py-4 rounded-lg hover:bg-white/20 transition border border-white/20 text-lg">
+              <Phone className="w-5 h-5" />
+              Call (267) 326-5093
             </a>
           </div>
           <div className="mt-8 text-sm text-gray-500">

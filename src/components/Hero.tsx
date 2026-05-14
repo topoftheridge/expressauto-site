@@ -1,3 +1,5 @@
+import { Phone } from "lucide-react";
+
 interface HeroProps {
   title: string;
   subtitle: string;
@@ -25,10 +27,11 @@ export default function Hero({ title, subtitle, showCTA = true }: HeroProps) {
                 GET A FREE QUOTE
               </a>
               <a
-                href="#services"
-                className="inline-flex items-center justify-center bg-white/10 backdrop-blur text-white font-bold px-8 py-4 rounded-lg hover:bg-white/20 transition border border-white/20 text-lg"
+                href="tel:+12673265093"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur text-white font-bold px-8 py-4 rounded-lg hover:bg-white/20 transition border border-white/20 text-lg"
               >
-                VIEW SERVICES
+                <Phone className="w-5 h-5" />
+                CALL (267) 326-5093
               </a>
             </div>
           )}
