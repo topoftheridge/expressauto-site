@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <div className="mb-4">
-              <Image src="/expressautoheaderlogo.jpg" alt="Express Auto Detail" width={170} height={100} className="h-16 w-auto" />
+              <Image src="/expressautoheaderlogo.svg" alt="Express Auto Detail" width={170} height={100} className="h-16 w-auto" />
             </div>
             <p className="text-sm mb-4">Professional mobile auto detailing serving Bucks County, PA and surrounding areas within a 30-mile radius. We come to you!</p>
             <div className="space-y-2 text-sm">
