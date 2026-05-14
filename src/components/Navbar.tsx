@@ -11,9 +11,9 @@ const areas = [
 ];
 
 const services = [
+  { label: "Full Detail Packages", href: "#services" },
   { label: "Interior Detailing", href: "#services" },
   { label: "Exterior Detailing", href: "#services" },
-  { label: "Full Detail Packages", href: "#services" },
   { label: "Paint Enhancement & Protection", href: "#paint-correction" },
 ];
 
@@ -28,14 +28,6 @@ export default function Navbar() {
     <>
       <nav className="sticky top-0 z-50 bg-black/95 backdrop-blur border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Top bar with phone */}
-          <div className="hidden lg:flex items-center justify-end py-1.5 border-b border-white/5">
-            <a href="tel:+12673265093" className="flex items-center gap-2 text-primary hover:text-primary-dark transition">
-              <Phone className="w-5 h-5" />
-              <span className="text-xl font-bold">(267) 326-5093</span>
-            </a>
-          </div>
-
           <div className="flex items-center justify-between h-20 lg:h-20">
             <Link href="/" className="flex items-center gap-2 shrink-0">
               <Image src="/expressheaderlogo.png" alt="Express Auto Detail" width={170} height={100} className="h-14 lg:h-[72px] w-auto" priority />
@@ -43,16 +35,14 @@ export default function Navbar() {
 
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center justify-end flex-1 ml-12">
-              <div className="flex items-center gap-8 mr-auto ml-8">
-                <Link href="/" className="text-white text-base hover:text-primary transition font-medium tracking-wide">Home</Link>
-
+              <div className="flex items-center gap-10 mr-auto ml-8">
                 {/* Services Dropdown */}
                 <div
                   className="relative"
                   onMouseEnter={() => setServicesOpen(true)}
                   onMouseLeave={() => setServicesOpen(false)}
                 >
-                  <button className="text-white text-base hover:text-primary transition font-medium tracking-wide flex items-center gap-1">
+                  <button className="text-white text-lg hover:text-primary transition font-medium tracking-wide flex items-center gap-1">
                     Services <ChevronDown className="w-4 h-4" />
                   </button>
                   {servicesOpen && (
@@ -72,12 +62,12 @@ export default function Navbar() {
                   onMouseEnter={() => setAreasOpen(true)}
                   onMouseLeave={() => setAreasOpen(false)}
                 >
-                  <button className="text-white text-base hover:text-primary transition font-medium tracking-wide flex items-center gap-1">
+                  <button className="text-white text-lg hover:text-primary transition font-medium tracking-wide flex items-center gap-1">
                     Areas <ChevronDown className="w-4 h-4" />
                   </button>
                   {areasOpen && (
                     <div className="absolute top-full left-0 mt-0 pt-2">
-                      <div className="bg-dark-lighter border border-white/10 rounded-lg shadow-xl py-2 w-56 max-h-80 overflow-y-auto">
+                      <div className="bg-dark-lighter border border-white/10 rounded-lg shadow-xl py-2 w-[420px] grid grid-cols-2">
                         {areas.map((area) => (
                           <a key={area} href="#areas" className="block px-4 py-2 text-base text-gray-300 hover:bg-primary/20 hover:text-primary transition">{area}, PA</a>
                         ))}
@@ -86,14 +76,18 @@ export default function Navbar() {
                   )}
                 </div>
 
-                <a href="#about" className="text-white text-base hover:text-primary transition font-medium tracking-wide">About</a>
-                <a href="#quote" className="text-white text-base hover:text-primary transition font-medium tracking-wide">Contact</a>
+                <a href="#about" className="text-white text-lg hover:text-primary transition font-medium tracking-wide">About</a>
+                <a href="/get-quote" className="text-white text-lg hover:text-primary transition font-medium tracking-wide">Contact</a>
               </div>
 
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-5">
+                <a href="tel:+12673265093" className="flex items-center gap-2 text-primary hover:text-primary-dark transition">
+                  <Phone className="w-5 h-5" />
+                  <span className="text-xl font-bold">(267) 326-5093</span>
+                </a>
                 <a
-                  href="#quote"
-                  className="bg-primary text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-primary-dark transition shadow-sm"
+                  href="/get-quote"
+                  className="bg-primary text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-primary-dark transition shadow-sm text-lg"
                 >
                   BOOK NOW
                 </a>
@@ -134,8 +128,6 @@ export default function Navbar() {
             (267) 326-5093
           </a>
 
-          <Link href="/" className="block py-3 font-medium text-lg text-white hover:text-primary transition border-b border-white/5" onClick={() => setMobileOpen(false)}>Home</Link>
-
           {/* Services Accordion */}
           <div className="border-b border-white/5">
             <button className="w-full py-3 font-medium text-lg text-white hover:text-primary transition flex items-center justify-between" onClick={() => setMobileServicesOpen(!mobileServicesOpen)}>
@@ -167,10 +159,10 @@ export default function Navbar() {
           </div>
 
           <a href="#about" className="block py-3 font-medium text-lg text-white hover:text-primary transition border-b border-white/5" onClick={() => setMobileOpen(false)}>About</a>
-          <a href="#quote" className="block py-3 font-medium text-lg text-white hover:text-primary transition border-b border-white/5" onClick={() => setMobileOpen(false)}>Contact</a>
+          <a href="/get-quote" className="block py-3 font-medium text-lg text-white hover:text-primary transition border-b border-white/5" onClick={() => setMobileOpen(false)}>Contact</a>
 
           <div className="pt-4 space-y-3">
-            <a href="#quote" className="block text-center bg-primary text-white px-5 py-3 rounded-lg font-semibold hover:bg-primary-dark transition" onClick={() => setMobileOpen(false)}>BOOK NOW</a>
+            <a href="/get-quote" className="block text-center bg-primary text-white px-5 py-3 rounded-lg font-semibold hover:bg-primary-dark transition" onClick={() => setMobileOpen(false)}>BOOK NOW</a>
           </div>
         </div>
       </div>

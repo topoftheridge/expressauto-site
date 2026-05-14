@@ -119,7 +119,7 @@ export default function HomePage() {
                   <li>• Leather/plastic conditioner</li>
                 </ul>
               </div>
-              <a href="#quote" className="mt-auto block text-center bg-white/10 text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary hover:text-white transition border border-white/10">
+              <a href="/get-quote" className="mt-auto block text-center bg-white/10 text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary hover:text-white transition border border-white/10">
                 Get Quote
               </a>
             </div>
@@ -147,7 +147,7 @@ export default function HomePage() {
                   <li>• Conditioner/protection/natural shine</li>
                 </ul>
               </div>
-              <a href="#quote" className="mt-auto block text-center bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-dark transition">
+              <a href="/get-quote" className="mt-auto block text-center bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-dark transition">
                 Get Quote
               </a>
             </div>
@@ -175,7 +175,7 @@ export default function HomePage() {
                   <li>• Conditioner/protection/shine</li>
                 </ul>
               </div>
-              <a href="#quote" className="mt-auto block text-center bg-white/10 text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary hover:text-white transition border border-white/10">
+              <a href="/get-quote" className="mt-auto block text-center bg-white/10 text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary hover:text-white transition border border-white/10">
                 Get Quote
               </a>
             </div>
@@ -205,7 +205,7 @@ export default function HomePage() {
                 <li>• Clay bar treatment</li>
                 <li>• 1-step polish</li>
               </ul>
-              <a href="#quote" className="mt-auto block text-center bg-white/10 text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary hover:text-white transition border border-white/10">
+              <a href="/get-quote" className="mt-auto block text-center bg-white/10 text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary hover:text-white transition border border-white/10">
                 Get Quote
               </a>
             </div>
@@ -223,7 +223,7 @@ export default function HomePage() {
                 <li>• Compound &amp; polish 2-step with polisher</li>
                 <li>• Carnauba wax finish</li>
               </ul>
-              <a href="#quote" className="mt-auto block text-center bg-white/10 text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary hover:text-white transition border border-white/10">
+              <a href="/get-quote" className="mt-auto block text-center bg-white/10 text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary hover:text-white transition border border-white/10">
                 Get Quote
               </a>
             </div>
@@ -242,7 +242,7 @@ export default function HomePage() {
                 <li>• Wuffle pad polish</li>
                 <li>• Carnauba wax finish</li>
               </ul>
-              <a href="#quote" className="mt-auto block text-center bg-white/10 text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary hover:text-white transition border border-white/10">
+              <a href="/get-quote" className="mt-auto block text-center bg-white/10 text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary hover:text-white transition border border-white/10">
                 Get Quote
               </a>
             </div>
@@ -264,7 +264,6 @@ export default function HomePage() {
               <div key={area} className="group rounded-xl border border-white/5 hover:border-primary/50 transition bg-dark-light p-5 text-center">
                 <MapPin className="w-5 h-5 text-primary mx-auto mb-2 group-hover:scale-110 transition-transform" />
                 <h3 className="text-white font-semibold text-base">{area}, PA</h3>
-                <p className="text-gray-500 text-xs mt-1">Auto Detailing in {area}</p>
               </div>
             ))}
           </div>
@@ -281,7 +280,7 @@ export default function HomePage() {
             We bring professional detailing right to your door. Fill out the form above for a free, no-obligation quote — or give us a call!
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#quote" className="inline-flex items-center justify-center bg-primary text-white font-bold px-8 py-4 rounded-lg hover:bg-primary-dark transition text-lg">
+            <a href="/get-quote" className="inline-flex items-center justify-center bg-primary text-white font-bold px-8 py-4 rounded-lg hover:bg-primary-dark transition text-lg">
               Contact Us
             </a>
             <a href="tel:+12673265093" className="inline-flex items-center justify-center gap-2 bg-white/10 text-white font-bold px-8 py-4 rounded-lg hover:bg-white/20 transition border border-white/20 text-lg">
