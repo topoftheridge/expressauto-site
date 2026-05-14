@@ -3,12 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, ArrowLeft, ArrowRight, Check, Calendar, Sparkles, Car, Paintbrush, Shield } from "lucide-react";
+import { Phone, ArrowLeft, ArrowRight, Check, Calendar, Sparkles, Car, Paintbrush, Shield, ChevronLeft, ChevronRight } from "lucide-react";
 
 const serviceOptions = [
+  { id: "full", label: "Full Detail Package", icon: Shield, desc: "Complete interior + exterior detail" },
   { id: "interior", label: "Interior Detailing", icon: Sparkles, desc: "Deep clean seats, carpets, dash & more" },
   { id: "exterior", label: "Exterior Detailing", icon: Car, desc: "Wash, clay, wax & tire shine" },
-  { id: "full", label: "Full Detail Package", icon: Shield, desc: "Complete interior + exterior detail" },
   { id: "paint", label: "Paint Enhancement & Protection", icon: Paintbrush, desc: "Polish, correction & ceramic coating" },
 ];
 
@@ -30,7 +30,7 @@ const addonOptions = [
 
 export default function GetQuotePage() {
   const [step, setStep] = useState(1);
-  const [service, setService] = useState("");
+  const [service, setService] = useState("full");
   const [condition, setCondition] = useState("");
   const [addons, setAddons] = useState<string[]>([]);
   const [name, setName] = useState("");
@@ -98,7 +98,7 @@ export default function GetQuotePage() {
                   <button
                     key={s.id}
                     onClick={() => setService(s.id)}
-                    className={`p-6 rounded-xl border text-left transition ${service === s.id ? "border-primary bg-primary/10" : "border-white/10 bg-dark-light hover:border-primary/50"}`}
+                    className={`p-6 rounded-xl border text-left transition ${service === s.id ? "border-primary bg-white/5 ring-1 ring-primary/30" : "border-white/10 bg-dark-light hover:border-primary/50"}`}
                   >
                     <s.icon className={`w-6 h-6 mb-3 ${service === s.id ? "text-primary" : "text-gray-400"}`} />
                     <h3 className="text-white font-semibold text-lg">{s.label}</h3>
@@ -168,10 +168,7 @@ export default function GetQuotePage() {
                 </div>
                 <div>
                   <label className="block text-sm text-gray-400 mb-1">Preferred Date (optional)</label>
-                  <div className="relative">
-                    <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="w-full bg-dark-light border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none" />
-                    <Calendar className="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-                  </div>
+                  <MiniCalendar value={date} onChange={setDate} />
                 </div>
               </div>
             </div>
@@ -216,14 +213,88 @@ function Header() {
   return (
     <header className="border-b border-white/10 bg-black/95">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-3">
           <Image src="/expressheaderlogo.png" alt="Express Auto Detail" width={140} height={80} className="h-10 w-auto" />
+          <span className="text-gray-400 text-sm hidden sm:inline">| Auto Detailing in Bucks County, PA</span>
         </Link>
-        <a href="tel:+12673265093" className="flex items-center gap-2 text-primary hover:text-primary-dark transition">
+        <a href="tel:+12673265093" className="flex items-center gap-2 text-gray-400 hover:text-primary transition">
           <Phone className="w-4 h-4" />
-          <span className="font-bold text-lg">(267) 326-5093</span>
+          <span className="text-sm">(267) 326-5093</span>
         </a>
       </div>
     </header>
+  );
+}
+
+function MiniCalendar({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+  const today = new Date();
+  const [viewMonth, setViewMonth] = useState(today.getMonth());
+  const [viewYear, setViewYear] = useState(today.getFullYear());
+
+  const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+  const firstDow = new Date(viewYear, viewMonth, 1).getDay();
+  const monthName = new Date(viewYear, viewMonth).toLocaleString("default", { month: "long" });
+
+  const prevMonth = () => {
+    if (viewMonth === 0) { setViewMonth(11); setViewYear(viewYear - 1); }
+    else setViewMonth(viewMonth - 1);
+  };
+  const nextMonth = () => {
+    if (viewMonth === 11) { setViewMonth(0); setViewYear(viewYear + 1); }
+    else setViewMonth(viewMonth + 1);
+  };
+
+  const isToday = (d: number) => d === today.getDate() && viewMonth === today.getMonth() && viewYear === today.getFullYear();
+  const toDateStr = (d: number) => `${viewYear}-${String(viewMonth + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+  const isSelected = (d: number) => value === toDateStr(d);
+  const isPast = (d: number) => {
+    const check = new Date(viewYear, viewMonth, d);
+    const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    return check < todayStart;
+  };
+
+  const cells = [];
+  for (let i = 0; i < firstDow; i++) cells.push(null);
+  for (let d = 1; d <= daysInMonth; d++) cells.push(d);
+
+  return (
+    <div className="rounded-xl border border-white/10 bg-dark-light p-4 select-none">
+      <div className="flex items-center justify-between mb-4">
+        <button type="button" onClick={prevMonth} className="p-1.5 rounded-lg hover:bg-white/10 transition text-gray-400 hover:text-white">
+          <ChevronLeft className="w-4 h-4" />
+        </button>
+        <span className="text-white font-semibold text-sm">{monthName} {viewYear}</span>
+        <button type="button" onClick={nextMonth} className="p-1.5 rounded-lg hover:bg-white/10 transition text-gray-400 hover:text-white">
+          <ChevronRight className="w-4 h-4" />
+        </button>
+      </div>
+      <div className="grid grid-cols-7 gap-1 mb-1">
+        {["S","M","T","W","T","F","S"].map((d, i) => (
+          <div key={i} className="text-center text-xs text-gray-500 font-medium py-1">{d}</div>
+        ))}
+      </div>
+      <div className="grid grid-cols-7 gap-1">
+        {cells.map((d, i) => (
+          <div key={i} className="flex items-center justify-center">
+            {d ? (
+              <button
+                type="button"
+                disabled={isPast(d)}
+                onClick={() => onChange(toDateStr(d))}
+                className={`w-9 h-9 rounded-full text-sm font-medium transition-all duration-150 relative flex items-center justify-center
+                  ${isSelected(d) ? "bg-primary text-white shadow-lg shadow-primary/25" : ""}
+                  ${!isSelected(d) && isToday(d) ? "text-primary font-bold" : ""}
+                  ${!isSelected(d) && !isToday(d) && !isPast(d) ? "text-gray-300 hover:bg-white/10" : ""}
+                  ${isPast(d) ? "text-gray-600 cursor-not-allowed" : "cursor-pointer"}
+                `}
+              >
+                {d}
+                {isToday(d) && !isSelected(d) && <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary" />}
+              </button>
+            ) : <span />}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }

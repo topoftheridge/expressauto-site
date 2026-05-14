@@ -35,7 +35,7 @@ export default function Navbar() {
 
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center justify-end flex-1 ml-12">
-              <div className="flex items-center gap-10 mr-auto ml-8">
+              <div className="flex items-center gap-16 mr-auto ml-8">
                 {/* Services Dropdown */}
                 <div
                   className="relative"
